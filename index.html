@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Running Dino Crisis on Crossover for macOS</title>
+  <meta name="description" content="Guide to running Dino Crisis on Crossover for macOS, including the DirectDraw workaround, Italian language notes, and Classic Rebirth patch notes.">
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #1d4ed8;
+      --code-bg: #f3f4f6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 20px 64px;
+    }
+    article {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+    h1, h2, h3 {
+      line-height: 1.25;
+      margin-top: 0;
+      color: #111827;
+    }
+    h1 { font-size: 2rem; margin-bottom: 0.75rem; }
+    h2 { font-size: 1.35rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    h3 { font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    p { margin: 0 0 1rem; }
+    ol { padding-left: 1.4rem; margin: 0 0 1rem; }
+    li { margin-bottom: 0.65rem; }
+    .lede {
+      font-size: 1.06rem;
+      color: var(--muted);
+    }
+    .note {
+      margin-top: 2rem;
+      padding: 18px 20px;
+      border-left: 4px solid var(--accent);
+      background: #eff6ff;
+      border-radius: 10px;
+    }
+    code {
+      background: var(--code-bg);
+      padding: 0.18rem 0.4rem;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.95em;
+    }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      overflow-x: auto;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .small {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <article>
+      <h1>Running Dino Crisis on Crossover for macOS</h1>
+      <p class="lede">Although Crossover is excellent software for running programs designed for Windows on macOS, some workarounds are often needed, especially when dealing with very old video games.</p>
+
+      <p>In this guide, I will talk about <strong>Dino Crisis</strong>, which is available on <strong>GOG</strong> and, apparently, on <strong>Steam</strong>.</p>
+
+      <p>The steps below are intended for users who purchased the game on GOG.</p>
+
+      <h2>Main installation steps</h2>
+      <ol>
+        <li>From the GOG website, download the <strong>offline installer</strong>.</li>
+        <li>In Crossover, click <strong>Install</strong>, point the program to the installer, and choose to use a <strong>Windows XP bottle</strong>.</li>
+        <li>After completing the usual installation steps, you will end up with a bottle named as you prefer and 4 icons: <strong>Dino Crisis</strong>, <strong>DirectX Settings</strong>, <strong>Support</strong>, and <strong>Uninstall Dino Crisis</strong>.</li>
+        <li>Launching the game by double-clicking <strong>Dino Crisis</strong> will inevitably result in an error mentioning <strong>DIRECTDRAW</strong>.</li>
+        <li>At this point, select <strong>Dino Crisis</strong>, then click <strong>Run with Options</strong>, and in the <strong>Environment Variables</strong> field enter the following string:</li>
+      </ol>
+
+      <pre><code>WINEDLLOVERRIDES='ddraw.dll=n'</code></pre>
+
+      <ol start="6">
+        <li>Play and enjoy the game.</li>
+      </ol>
+
+      <h2>For Italian users</h2>
+      <p>Unfortunately, the offline installer of Dino Crisis does not include the Italian language. In order to play in Italian, you will need to use <strong>two separate bottles</strong>.</p>
+
+      <ol>
+        <li>In the first bottle, install <strong>GOG Galaxy</strong>, log in to the application, and download <strong>Dino Crisis</strong>.</li>
+        <li>Download the <strong>offline installer</strong> and run it in a separate bottle, as described in the instructions above.</li>
+        <li>Using Finder, copy the files from the GOG Galaxy installation into the bottle where you installed Dino Crisis using only the offline installer.</li>
+        <li>Continue by following the steps above from point 5 to point 6.</li>
+      </ol>
+
+      <p>I am almost certain that the subtitles are included within the game executable.</p>
+
+      <div class="note">
+        <h2>Important note: Classic Rebirth patch</h2>
+        <p>The <strong>Rebirth patch</strong> is compatible with Crossover and can be launched successfully, but it presents some issues that are difficult to resolve.</p>
+        <p>Basically, you need to follow the steps provided on the patch developer’s website and launch the executable while still using the environment variable shown earlier:</p>
+        <p><a href="https://classicrebirth.com/index.php/dino-crisis-classic-rebirth/">classicrebirth.com/index.php/dino-crisis-classic-rebirth/</a></p>
+        <p>The main problem is the settings selector, which does not support high video resolutions. On top of that, the game seems to launch only in <strong>windowed mode</strong>. I also experienced difficulties remapping keyboard controls.</p>
+        <p>I have not tested controller support.</p>
+      </div>
+
+      
+    </article>
+  </div>
+</body>
+</html>
